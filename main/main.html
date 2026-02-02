@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine?</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pinky: "#ff4d6d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+<img
+  id="bouncingImage"
+  src="em.png"
+  class="fixed w-20 pointer-events-none select-none"
+/>
+<img
+  id="bouncingImage2"
+  src="images.png"
+  class="fixed w-20 pointer-events-none select-none"
+/>
+
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-200 via-rose-100 to-pink-300"
+  >
+  <audio id="bgMusic" src="sound.mp3" loop></audio>
+  <audio id="yaySound" src="yay.mpeg"></audio>
+
+
+    <!-- Floating hearts -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-10 left-10 text-3xl animate-bounce">💖</div>
+      <div class="absolute top-1/3 right-20 text-4xl animate-pulse">🌸</div>
+      <div class="absolute bottom-20 left-1/4 text-3xl animate-bounce">💘</div>
+    </div>
+
+    <!-- Main Card -->
+    <div
+  class="relative rounded-3xl shadow-2xl p-10 text-center w-[90%] max-w-md"
+  style="background-image: url('boxbg.jpeg'); background-size: cover; background-position: center;"
+>
+<div
+  id="videoBg"
+  class="absolute inset-0 rounded-3xl overflow-hidden hidden"
+>
+  <video
+  id="bgVideo"
+  src="gif.mp4"
+  class="w-full h-full object-cover"
+  playsinline
+  muted
+  style="opacity: 0.25; mix-blend-mode: multiply;"
+></video>
+
+</div>
+
+      <h1 class="text-3xl font-bold text-rose-600 mb-8">
+        Will you be my Valentine? 💕
+      </h1>
+
+      <div class="relative h-40">
+  <!-- YES BUTTON -->
+  <button
+    id="yesBtn"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-pinky hover:bg-rose-600 text-white px-8 py-3 rounded-full text-lg shadow-lg transition-transform hover:scale-105"
+  >
+    Yes 💖
+  </button>
+
+  <!-- NO BUTTON -->
+  <button
+  id="noBtn"
+  class="absolute bg-gray-400 text-white px-6 py-2 rounded-full shadow-md transition-opacity duration-150"
+  style="top: 85%; left: 50%; transform: translate(-50%, -50%);"
+>
+  No 💔
+</button>
+<div
+  id="yayy"
+  class="hidden w-full h-48 mt-6 rounded-2xl overflow-hidden"
+></div>
+
+</div>
+
+
+      <p id="message" class="mt-6 text-xl text-rose-500 hidden">
+        YAY!!! 💐💞
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+    
+  </body>
+</html>
+

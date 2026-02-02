@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Mademoiselle ✨</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pinky: "#ff4d6d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-200 via-rose-100 to-pink-300"
+  >
+    <!-- Floating emojis -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-10 left-10 text-3xl animate-bounce">💖</div>
+      <div class="absolute top-1/3 right-20 text-4xl animate-pulse">🌸</div>
+      <div class="absolute bottom-20 left-1/4 text-3xl animate-bounce">💘</div>
+      <div
+  id="emojiLayer"
+  class="absolute inset-0 overflow-hidden pointer-events-none"
+></div>
+
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" src="sound.mp3" loop></audio>
+
+    <!-- Main Card -->
+    <div
+      class="relative rounded-3xl shadow-2xl p-10 text-center w-[90%] max-w-md overflow-hidden"
+      style="background-image: url('boxbg.jpeg'); background-size: cover; background-position: center;"
+    >
+      <!-- Question -->
+      <h1 class="text-2xl font-bold text-rose-600 mb-8">
+        What would your name be? <br>
+        💐
+      </h1>
+
+      <!-- Name input -->
+      <input
+        id="nameInput"
+        type="text"
+        placeholder="Type your name here..."
+        class="w-full px-4 py-3 rounded-full text-center shadow-md outline-none focus:ring-2 focus:ring-rose-400"
+      />
+
+      <!-- Bottom section -->
+      <div class="relative mt-14 flex items-end justify-end">
+        <!-- Sanji -->
+        <img
+          src="sanji.png"
+          alt="Sanji"
+          class="absolute left-[-30px] bottom-[-10px] w-36 select-none pointer-events-none"
+        />
+
+        <!-- Enter button -->
+        <button
+          id="enterBtn"
+          class="bg-pinky hover:bg-rose-600 text-white px-8 py-3 rounded-full text-lg shadow-lg transition-transform hover:scale-105"
+        >
+          Enter 💖
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const enterBtn = document.getElementById("enterBtn");
+      const bgMusic = document.getElementById("bgMusic");
+      const nameInput = document.getElementById("nameInput");
+
+      enterBtn.addEventListener("click", () => {
+        // Save name (optional future use)
+        localStorage.setItem("valentineName", nameInput.value.trim());
+
+        // Start music
+        bgMusic.play();
+
+        // Small delay so audio starts, then navigate
+        setTimeout(() => {
+          window.location.href = "main/main.html";
+        }, 300);
+      });
+        const emojiLayer = document.getElementById("emojiLayer");
+
+  const emojis = ["💖", "💘", "💕", "💞", "🌸", "✨", "💐"];
+  const animations = ["animate-bounce", "animate-pulse"];
+
+  const EMOJI_COUNT = 18; // match Valentine page vibe
+
+  for (let i = 0; i < EMOJI_COUNT; i++) {
+    const el = document.createElement("div");
+
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    el.className = `
+      absolute
+      ${animations[Math.floor(Math.random() * animations.length)]}
+      pointer-events-none
+    `;
+
+    const size = Math.floor(Math.random() * 3) + 2;
+    el.classList.add(`text-${size}xl`);
+
+    el.style.top = Math.random() * 95 + "%";
+    el.style.left = Math.random() * 95 + "%";
+
+    emojiLayer.appendChild(el);
+  }
+    </script>
+    
+  </body>
+</html>
